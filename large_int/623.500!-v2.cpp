@@ -60,7 +60,7 @@ int main(){
 	big x[1001];
 	x[0]="1";
 	for(i=1;i<1001;i++)
-		x[i]=x[i-1]*i;	
+		x[i]=x[i-1]*i;
 	while(ins>>n){
 		cout<<n<<"!"<<endl;
 		cout<<x[n]<<endl;

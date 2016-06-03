@@ -24,33 +24,40 @@ Sample Input
 Sample Output
 
 3 card(s)
-    61 card(s)
-    1 card(s)
-    273 card(s)
+61 card(s)
+1 card(s)
+273 card(s)
     Source
 
     Mid-Central USA 2001
     */
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
-double card(int x);
 int main(){
     ifstream fin("2294.txt");
     istream& ins(fin);
-    double x;
-    int i;
-    while(ins>>x&&x){
-        i=1;
-        while(card(i)<x)
-            i++;
-        cout<<i<<" card(s)"<<endl;
-    }
-    return 0;
-}
-double card(int x){
+    //table
+    vector<double> table;
+    table.push_back(0);
     double sum=0;
-    for (int i = 2; i < x+2; i++)
-        sum+=1.0/i;
-    return sum;
+    for (int i = 0; table[i]<5.2; i++) {
+        sum+=1.0/(i+2);
+        table.push_back(sum);
+    }
+    double x;
+    int l,r,m;
+    while(ins>>x&&x){
+        l=0;
+        r=table.size()-1;
+        while(l<r){
+            m=(l+r)/2;
+            if(table[m]<x)
+                l=m+1;
+            else
+                r=m;
+        }
+        cout<<r<<" card(s)"<<endl;
+    }
 }
