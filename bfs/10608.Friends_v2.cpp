@@ -78,7 +78,7 @@ int main(){
                     if(!qb[relation[now][j]]){
                     	query.push_back(relation[now][j]);
                     	qb[relation[now][j]]=1;
-                    }                        
+                    }
                 flag++;
             }
             if(query.size()>max)
